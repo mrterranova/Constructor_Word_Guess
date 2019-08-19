@@ -1,23 +1,28 @@
-import { endianness } from "os";
+let word = require("./word");
+let index = require("./index");
 
 let number =0;
 let wrong = [];
 let blanks = [];
 let wordChosen = "";
-
+letter="";
 function start(){
-    word.getWord(wordChosen);
-
+    wordChosen = word.getWord();
+    console.log(wordChosen);
     for (var i = 0; i < wordChosen.length; i++){
-        if (!wordChosen[i]=== " "){
-            blanks.push("_");
-        }
+        if (wordChosen[i] !== " "){
+            blanks +=("_ ");
+    } else {
+        blanks += ("  ");
     }
-    return blanks;
+    // return blanks;
 }
+var stringWord = blanks;
+console.log(stringWord);
+};
 
 function Check(letter) {
-    if (letter >= "A" && "Z"){
+    if (letter >= "a" && "z"){
         var isLetterInWord = false;
 
         for (var i=0; i<Number.length;i++){
@@ -62,7 +67,9 @@ function end(){
 }
 
 start();
-Check(letterGuessed);
-console.log(letterGuessed);
-end();
+console.log(index);
+//letterGuessed = index.inquire();
+// Check(letterGuessed);
+// console.log(letterGuessed);
+//end();
 console.log(wrong);
