@@ -78,5 +78,6 @@ letterGuessed = index.ask().then(function(userPick){
     Check(userPick);
     return userPick;
 });
+
 end();
 console.log(wrong);
