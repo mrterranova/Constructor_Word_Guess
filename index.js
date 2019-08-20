@@ -1,10 +1,10 @@
 let inquirer = require('inquirer');
+function ask() {
 
 console.log("\n\nWELCOME TO HANGMAN: IN NODE.JS");
 console.log("Guess the old time sayings...\n\n")
 
 //ask();
-function ask() {
     
     return inquirer
     .prompt([
@@ -19,7 +19,6 @@ function ask() {
         userPick = answers.pick;
         console.log("You've picked: " + userPick);
         return userPick;
-        letter.end();
     });
 };
 
@@ -28,3 +27,4 @@ module.exports = {
 };
 
 let letter = require("./letter");
+letter.Check();
