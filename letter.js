@@ -1,41 +1,45 @@
 let word = require("./word");
 let index = require("./index");
+console.log(index);
 
-let number =0;
+let Number =0;
 let wrong = [];
 let blanks = [];
 let wordChosen = "";
 letter="";
+guesses = 10;
+
 function start(){
     wordChosen = word.getWord();
     console.log(wordChosen);
     for (var i = 0; i < wordChosen.length; i++){
         if (wordChosen[i] !== " "){
-            blanks +=("_ ");
-    } else {
-        blanks += ("  ");
+            blanks.push("_");
+        } else {
+            blanks.push(" ");
+        }
+        // return blanks;
     }
-    // return blanks;
-}
-var stringWord = blanks;
-console.log(stringWord);
+    var stringWord = blanks;
+    console.log(stringWord);
 };
 
 function Check(letter) {
-    if (letter >= "a" && "z"){
+    console.log()
+    if (letter >= "a" && letter <= "z"){
         var isLetterInWord = false;
-
-        for (var i=0; i<Number.length;i++){
-            if (s[i]===letter){
+        for (var i=0; i<wordChosen.length;i++){
+            if (wordChosen[i]===letter){
                 isLetterInWord = true;
             }
         }
-
+        
         if (isLetterInWord){
-            for (var i = 0; i<Number.length; i++){
-                if (s[i]===letter){
+            for (var i = 0; i<wordChosen.length; i++){
+                if (wordChosen[i]===letter){
                     blanks[i] = letter;
-    
+                    console.log("letter"+letter)
+                    console.log("what's up?"+ blanks)
                 }
             }
         } else {
@@ -45,12 +49,13 @@ function Check(letter) {
                 isAlreadyThere = true; 
             }
         }
-
+        
         if(!isAlreadyThere){
             wrong.push(letter);
             guesses--;
         }
-
+        console.log("Letters Guessed: "+ wrong + "\n" + blanks);
+        index.ask();   
     }
 }
 
@@ -67,9 +72,11 @@ function end(){
 }
 
 start();
-console.log(index);
-//letterGuessed = index.inquire();
-// Check(letterGuessed);
-// console.log(letterGuessed);
-//end();
+letterGuessed = index.ask().then(function(userPick){
+    // console.log(letterGuessed);
+    console.log(userPick);
+    Check(userPick);
+    return userPick;
+});
+end();
 console.log(wrong);
