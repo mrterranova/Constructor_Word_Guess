@@ -1,30 +1,28 @@
 let inquirer = require('inquirer');
-function ask() {
 
+userPick = "";
 console.log("\n\nWELCOME TO HANGMAN: IN NODE.JS");
 console.log("Guess the old time sayings...\n\n")
+ask();
 
-//ask();
-    
+function ask() {
+//inquirer prompt to ask user questions
     return inquirer
     .prompt([
         {
             type: "input",
             name: "pick",
             message: "Pick a letter:"
-            
         }
     ])
     .then(answers => {
         userPick = answers.pick;
         console.log("You've picked: " + userPick);
-        return userPick;
+        let letter = require("./letter");
+        letter.Check();
     });
 };
 
 module.exports = {
     ask,
 };
-
-let letter = require("./letter");
-letter.Check();
