@@ -8,6 +8,7 @@
     return chosenWord;
 }
 
+//exporting word from file
 module.exports={
     getWord,
 };
