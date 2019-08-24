@@ -20,10 +20,10 @@ function ask() {
         console.log("You've picked: " + userPick);
         let letter = require("./letter");
         letter.Check();
+        //exporting the letter 
+        module.exports = {
+            ask,
+        };
     });
 };
 
-//exporting the letter 
-module.exports = {
-    ask,
-};
